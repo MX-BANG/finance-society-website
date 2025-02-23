@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Society</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="/Screenshot 2025-02-23 011301.png" alt="Finance Society Logo" class="logo">
+            <h1>Finance Society</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="login.html" class="btn btn-primary">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h2>Empowering Future Investors & Financial Leaders</h2>
+            <p>Join our community and gain real-world trading experience.</p>
+            <a href="login.html" class="btn btn-primary">Join Now</a>
+        </section>
+
+        <section id="about">
+            <div class="about-content">
+                <div class="text">
+                    <h3>About Us</h3>
+                    <p>The Finance Society is a student-led organization dedicated to fostering financial literacy and investment knowledge among future leaders. Through hands-on experience, expert workshops, and networking opportunities, we prepare our members for successful careers in finance.</p>
+                    <p>Our virtual trading platform allows members to practice investment strategies in a risk-free environment, while our events connect students with industry professionals.</p>
+                </div>
+                <div class="image">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40" alt="Finance Society Meeting" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <section id="events">
+            <h3>Upcoming Events</h3>
+            <div class="event-slider">
+                <div class="event-card">
+                    <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7" alt="Investment Workshop" loading="lazy">
+                    <div class="event-card-content">
+                        <h4>Investment Workshop</h4>
+                        <p class="date">October 15, 2023</p>
+                        <p>Learn fundamental investment strategies from industry experts.</p>
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0" alt="Trading Competition" loading="lazy">
+                    <div class="event-card-content">
+                        <h4>Trading Competition</h4>
+                        <p class="date">November 1, 2023</p>
+                        <p>Test your trading skills in our monthly virtual trading competition.</p>
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11" alt="Networking Event" loading="lazy">
+                    <div class="event-card-content">
+                        <h4>Networking Night</h4>
+                        <p class="date">November 20, 2023</p>
+                        <p>Connect with finance professionals and fellow members.</p>
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partners">
+            <h3>Partners & Sponsors</h3>
+            <div class="partners-carousel">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Goldman_Sachs.svg/1280px-Goldman_Sachs.svg.png" alt="Goldman Sachs" class="partner-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Morgan_Stanley.svg/1280px-Morgan_Stanley.svg.png" alt="Morgan Stanley" class="partner-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/JPMorgan_Chase.svg/1280px-JPMorgan_Chase.svg.png" alt="JP Morgan" class="partner-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Dell_Logo.png/1280px-Dell_Logo.png" alt="Dell" class="partner-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1280px-IBM_logo.svg.png" alt="IBM" class="partner-logo">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:info@financesociety.com">info@financesociety.com</a></p>
+                <p>Phone: <a href="tel:+11234567890">(123) 456-7890</a></p>
+                <p>Address: 123 Finance St, City, Country</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#events">Events</a></li>
+                </ul>
+            </div>
+            <div class="social-links">
+                <h3>Follow Us</h3>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Finance Society. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize ScrollReveal for smooth animations
+        ScrollReveal().reveal('.hero', { delay: 200 });
+        ScrollReveal().reveal('.about-content', { delay: 300 });
+        ScrollReveal().reveal('.event-card', { delay: 400, interval: 200 });
+        ScrollReveal().reveal('.partner-logo', { delay: 500, interval: 100 });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Sticky header
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
+        });
+    </script>
+</body>
+</html>

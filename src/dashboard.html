@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Dashboard - Finance Society</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--navy-blue);
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .market-feed {
+            overflow-x: auto;
+        }
+
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .market-table th,
+        .market-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .market-table th {
+            font-weight: 600;
+            color: var(--grey);
+        }
+
+        .market-table tr:hover {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .positive {
+            color: #4caf50;
+        }
+
+        .negative {
+            color: #f44336;
+        }
+
+        .trade-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border: 1px solid var(--navy-blue);
+            background: transparent;
+            color: var(--navy-blue);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .trade-btn:hover {
+            background: var(--navy-blue);
+            color: var(--white);
+        }
+
+        .chart-container {
+            height: 300px;
+            margin: 2rem 0;
+            background: var(--white);
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .loading {
+            position: relative;
+            height: 200px;
+        }
+
+        .loading::after {
+            content: "Loading...";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--grey);
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Trading Dashboard</h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#market">Market</a></li>
+                <li><a href="#trades">Trades</a></li>
+                <li>
+                    <button class="theme-toggle" onclick="toggleDarkMode()">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="dashboard">
+        <section id="portfolio" class="dashboard-section">
+            <div class="dashboard-header">
+                <h2>Your Portfolio</h2>
+                <button class="btn btn-primary">Deposit Funds</button>
+            </div>
+            <div class="portfolio-stats">
+                <div class="stat-card">
+                    <h3>Virtual Balance</h3>
+                    <p>$10,000.00</p>
+                    <small>Available for trading</small>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Assets</h3>
+                    <p>$15,000.00</p>
+                    <small>Including investments</small>
+                </div>
+                <div class="stat-card">
+                    <h3>Profit/Loss</h3>
+                    <p class="positive">+$5,000.00</p>
+                    <small>All time</small>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="portfolioChart"></canvas>
+            </div>
+        </section>
+        
+        <section id="market" class="dashboard-section">
+            <div class="dashboard-header">
+                <h2>Live Market</h2>
+                <div class="market-actions">
+                    <input type="text" placeholder="Search stocks..." class="search-input">
+                </div>
+            </div>
+            <div class="market-feed">
+                <table class="market-table">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Company</th>
+                            <th>Price</th>
+                            <th>Change</th>
+                            <th>Market Cap</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="marketTableBody">
+                        <tr>
+                            <td>AAPL</td>
+                            <td>Apple Inc.</td>
+                            <td>$150.25</td>
+                            <td class="positive">+2.5%</td>
+                            <td>2.5T</td>
+                            <td><button class="trade-btn">Trade</button></td>
+                        </tr>
+                        <tr>
+                            <td>GOOGL</td>
+                            <td>Alphabet Inc.</td>
+                            <td>$2,850.00</td>
+                            <td class="negative">-1.2%</td>
+                            <td>1.9T</td>
+                            <td><button class="trade-btn">Trade</button></td>
+                        </tr>
+                        <tr>
+                            <td>MSFT</td>
+                            <td>Microsoft Corp.</td>
+                            <td>$310.75</td>
+                            <td class="positive">+1.8%</td>
+                            <td>2.3T</td>
+                            <td><button class="trade-btn">Trade</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="trades" class="dashboard-section">
+            <h2>Recent Trades</h2>
+            <div class="trades-history">
+                <table class="market-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Symbol</th>
+                            <th>Type</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2023-10-01</td>
+                            <td>AAPL</td>
+                            <td>Buy</td>
+                            <td>$148.50</td>
+                            <td>10</td>
+                            <td>$1,485.00</td>
+                        </tr>
+                        <tr>
+                            <td>2023-09-30</td>
+                            <td>GOOGL</td>
+                            <td>Sell</td>
+                            <td>$2,845.00</td>
+                            <td>2</td>
+                            <td>$5,690.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:info@financesociety.com">info@financesociety.com</a></p>
+                <p>Phone: <a href="tel:+11234567890">(123) 456-7890</a></p>
+                <p>Address: 123 Finance St, City, Country</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#events">Events</a></li>
+                </ul>
+            </div>
+            <div class="social-links">
+                <h3>Follow Us</h3>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Finance Society. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Dark mode toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.querySelector('.theme-toggle i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+
+        // Portfolio chart
+        const ctx = document.getElementById('portfolioChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                datasets: [{
+                    label: 'Portfolio Value',
+                    data: [10000, 11200, 10800, 12500, 15000],
+                    borderColor: '#1a237e',
+                    tension: 0.4,
+                    fill: true,
+                    backgroundColor: 'rgba(26, 35, 126, 0.1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        grid: {
+                            display: true,
+                            drawBorder: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Simulated live market data updates
+        function updateMarketData() {
+            const symbols = ['AAPL', 'GOOGL', 'MSFT'];
+            symbols.forEach(symbol => {
+                const change = (Math.random() * 4 - 2).toFixed(2);
+                const row = document.querySelector(`tr:has(td:contains(${symbol}))`);
+                if (row) {
+                    const changeCell = row.querySelector('td:nth-child(4)');
+                    changeCell.textContent = `${change}%`;
+                    changeCell.className = change >= 0 ? 'positive' : 'negative';
+                }
+            });
+        }
+
+        // Update market data every 5 seconds
+        setInterval(updateMarketData, 5000);
+    </script>
+</body>
+</html>

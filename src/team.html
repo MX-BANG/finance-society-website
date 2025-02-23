@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - Finance Society</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .team-header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 100%);
+            color: white;
+        }
+
+        .team-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-header p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .team-grid {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .member-name {
+            font-size: 1.25rem;
+            color: var(--navy-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--grey);
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .member-bio {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--grey);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--navy-blue);
+        }
+
+        .department-filter {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            color: var(--grey);
+            transition: var(--transition);
+        }
+
+        .filter-btn.active {
+            color: var(--navy-blue);
+            border-bottom: 2px solid var(--navy-blue);
+        }
+
+        @media (max-width: 768px) {
+            .team-header h1 {
+                font-size: 2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1><a href="index.html" style="text-decoration: none;">Finance Society</a></h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#events">Events</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="login.html" class="btn btn-primary">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="team-header">
+        <h1>Meet Our Team</h1>
+        <p>A dedicated group of students and professionals working together to create opportunities in finance.</p>
+    </div>
+
+    <div class="department-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="executive">Executive Board</button>
+        <button class="filter-btn" data-filter="research">Research Team</button>
+        <button class="filter-btn" data-filter="events">Events Team</button>
+    </div>
+
+    <div class="team-grid">
+        <!-- Executive Board -->
+        <div class="team-member" data-department="executive">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a" alt="John Smith" class="member-image">
+            <div class="member-info">
+                <h3 class="member-name">John Smith</h3>
+                <p class="member-role">President</p>
+                <p class="member-bio">Finance major with a passion for investment banking and market analysis.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-member" data-department="executive">
+            <img src="https://images.unsplash.com/photo-1573496799652-408c2ac9fe98" alt="Sarah Johnson" class="member-image">
+            <div class="member-info">
+                <h3 class="member-name">Sarah Johnson</h3>
+                <p class="member-role">Vice President</p>
+                <p class="member-bio">Specializing in quantitative analysis and algorithmic trading strategies.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Research Team -->
+        <div class="team-member" data-department="research">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7" alt="Michael Chen" class="member-image">
+            <div class="member-info">
+                <h3 class="member-name">Michael Chen</h3>
+                <p class="member-role">Head of Research</p>
+                <p class="member-bio">Expert in market research and fundamental analysis.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Team -->
+        <div class="team-member" data-department="events">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956" alt="Emily Davis" class="member-image">
+            <div class="member-info">
+                <h3 class="member-name">Emily Davis</h3>
+                <p class="member-role">Events Coordinator</p>
+                <p class="member-bio">Organizing networking events and educational workshops.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:info@financesociety.com">info@financesociety.com</a></p>
+                <p>Phone: <a href="tel:+11234567890">(123) 456-7890</a></p>
+                <p>Address: 123 Finance St, City, Country</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#events">Events</a></li>
+                </ul>
+            </div>
+            <div class="social-links">
+                <h3>Follow Us</h3>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Finance Society. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Department filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const teamMembers = document.querySelectorAll('.team-member');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Filter team members
+                const filter = button.dataset.filter;
+                teamMembers.forEach(member => {
+                    if (filter === 'all' || member.dataset.department === filter) {
+                        member.style.display = 'block';
+                    } else {
+                        member.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
