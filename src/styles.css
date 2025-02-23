@@ -25,21 +25,23 @@ body {
 header {
     position: sticky;
     top: 0;
-    background-color: var(--white);
-    box-shadow: var(--shadow);
+    background-color: transparent; 
     z-index: 1000;
-    padding: 1rem 2rem;
+    padding: 0; 
 }
 
 nav {
     display: flex;
-    align-items: center; /* Aligns items vertically in the center */
-    justify-content: space-between; /* Space between logo/title and the menu */
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 1rem 2rem;
 }
 
-h1 {
-    margin: 0; /* Remove default margin from h1 */
-    font-size: 1.5rem; /* Adjust font size as needed */
+nav h1 {
+    color: var(--white);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); 
+    margin: 0; 
+    font-size: 1.5rem; 
 }
 
 nav ul {
@@ -50,36 +52,38 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: var(--navy-blue);
+    color: var(--white); 
     font-weight: 500;
     transition: var(--transition);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
 }
 
 nav a:hover {
     color: var(--grey);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9); 
 }
-
 .logo {
-    height: 40px; /* Adjust the height as needed */
-    margin-right: -40rem; /* Reduced space between the logo and the title */
-    vertical-align: middle; /* Aligns the logo with the text */
+    height: 40px;
+    margin-right: -40rem; 
+    vertical-align: middle; 
 }
 
 
 /* Hero Section */
 .hero {
-    height: 80vh;
+    height: 750px;
+    margin-top: -73px; 
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url('https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f');
     background-size: cover;
-    background-position: center;
+    background-position: top center; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: var(--white);
-    padding: 2rem;
+    padding: 0rem;
 }
 
 .hero h2 {
@@ -94,7 +98,7 @@ nav a:hover {
     max-width: 600px;
 }
 
-/* Buttons */
+
 .btn {
     padding: 1rem 2rem;
     border: none;
@@ -103,6 +107,7 @@ nav a:hover {
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
+        text-decoration: none; 
 }
 
 .btn-primary {
@@ -133,6 +138,16 @@ nav a:hover {
 }
 
 /* Events Section */
+.events-title {
+    text-align: center; 
+    font-size: 2rem; 
+    font-weight: 600; 
+    color: var(--navy-blue); 
+    margin-bottom: 1.5rem; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+}
+
 .event-slider {
     max-width: 1200px;
     margin: 2rem auto;
@@ -335,7 +350,7 @@ footer {
     display: flex;
     justify-content: space-between;
     padding: 0 2rem;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    flex-wrap: wrap; 
 }
 
 .footer-info,
@@ -343,14 +358,14 @@ footer {
 .social-links {
     flex: 1;
     margin: 0 1rem;
-    min-width: 200px; /* Ensures a minimum width for each section */
+    min-width: 200px; 
 }
 
 .footer-info h3,
 .footer-links h3,
 .social-links h3 {
     margin-bottom: 1rem;
-    font-size: 1.25rem; /* Slightly larger font for headings */
+    font-size: 1.25rem; 
 }
 
 .footer-info p,
@@ -385,7 +400,7 @@ footer {
 }
 
 .social-links a:hover {
-    color: #f0f0f0; /* Slightly lighter color on hover */
+    color: #f0f0f0; 
 }
 
 .footer-bottom {
